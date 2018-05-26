@@ -1,0 +1,18 @@
+version: '3.1'
+services:
+  master:
+    image: borgified/jenkins:staging
+    ports:
+      - 8080:8080
+      - 50000:50000
+    secrets:
+      - jenkins-user
+      - jenkins-pass
+    environment:
+      - "SWARM_MASTER_URL=${SWARM_MASTER_URL}"
+
+secrets:
+  jenkins-user:
+    external: true
+  jenkins-pass:
+    external: true
